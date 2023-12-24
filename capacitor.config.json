@@ -1,0 +1,13 @@
+{
+    "appId": "com.msouq.app",
+    "appName": "msz",
+    "webDir": "dist",
+    "bundledWebRuntime": true,
+    "plugins": {
+        "GoogleAuth": {
+            "scopes": ["profile", "email"],
+            "serverClientId": "185664553546-opbdh84bdmfq3aeiltjvcm1al9bg8ppc.apps.googleusercontent.com",
+            "forceCodeForRefreshToken": true
+        }
+    }
+}

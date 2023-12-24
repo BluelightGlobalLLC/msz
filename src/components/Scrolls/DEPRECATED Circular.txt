@@ -1,0 +1,85 @@
+<template>
+	<div class="accessories" :style="{ 'margin-bottom': props.rem + 'rem' }">
+		<div class="initial-padding"></div>
+		<div v-for="accessory in accessories" :key="accessory">
+			<div class="accessory">
+				<div class="item" @click="$router.push('/list/' + 'dbase/' + accessory[2] )">
+					<img :src="accessory[0]" alt="" />
+				</div>
+				<h2 class="item-title">{{ accessory[1] }}</h2>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const props = defineProps({
+	rem: { type: Number, default: 2 },
+});
+
+const accessories = ref([
+	["https://i.imgur.com/5X71clt.png", "Top Offers", "Trending Offers"],
+	["https://i.imgur.com/RYmVISi.png", "Latest", "New Releases"],
+	["https://i.imgur.com/wT0IGrK.png", "Price Drops", "Price Reductions"],
+	["https://i.imgur.com/lr0imTG.png", "Bundles", "Bundle Offers"],
+	["https://i.imgur.com/9U4b7av.png", "Our Stores", "Store Locations"],
+	["https://i.imgur.com/7Z3nnlu.png", "Clearance", "Clearance Sale"],
+	["https://i.imgur.com/wUaP5ll.png", "Trending", "Trending Devices"],
+]);
+</script>
+
+<style scoped>
+.accessories {
+	scroll-padding: 3rem;
+	display: flex;
+	scroll-snap-points-x: repeat(300px);
+	scroll-snap-type: x proximity;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	scroll-behavior: smooth;
+	height: max-content;
+}
+
+.item {
+	width: 4rem;
+	border-radius: 50%;
+	margin-right: 1.5rem;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 0.3rem;
+}
+
+.accessories::-webkit-scrollbar {
+	display: none;
+}
+
+.initial-padding {
+	padding: 0.4rem;
+}
+
+.accessory {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-items: center;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+}
+
+.item-title {
+	margin-right: 1.5rem;
+	margin-top: 0.5rem;
+	font-family: Poppins;
+	font-size: 0.75rem;
+	font-weight: 400;
+	white-space: nowrap;
+}
+
+img {
+	height: 4rem;
+	width: 4rem;
+}
+</style>

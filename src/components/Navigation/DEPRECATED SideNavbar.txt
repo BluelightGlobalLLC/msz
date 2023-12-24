@@ -1,0 +1,38 @@
+<template>
+    <div class="sidebar" :class="{ hidden: !currentSidebarState }">
+        <settings />
+    </div>
+</template>
+
+<script setup>
+import Settings from "../Links/Settings.vue";
+
+import { useMainStore } from "../../store/useMainStore";
+import { storeToRefs } from "pinia";
+const main = useMainStore();
+
+const { currentSidebarState } = storeToRefs(main);
+</script>
+
+<style scoped>
+.sidebar {
+    min-width: 15rem;
+    background-color: white;
+    height: 100vh;
+    position: fixed;
+    top: 0vw;
+    z-index: 101;
+    transition-timing-function: ease-out;
+    transition: 0.4s;
+    overflow: hidden;
+    padding-top: 3rem;
+    padding-left: 0.5rem;
+}
+
+.hidden {
+    transform: translateX(-100%);
+    transition-timing-function: ease-out;
+    transition: 0.4s;
+    overflow: hidden;
+}
+</style>
