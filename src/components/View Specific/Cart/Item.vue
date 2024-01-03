@@ -39,7 +39,7 @@ import { storeToRefs } from "pinia";
 import axios from "axios";
 
 const main = useMainStore();
-const { cartItems } = storeToRefs(main);
+const { cartItems, currentLanguage } = storeToRefs(main);
 const { removeCartItem, generateBilling } = main;
 
 const props = defineProps({
@@ -58,7 +58,7 @@ function removeItem(itemID) {
 const data = ref(null);
 async function getCartItemData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/cart/item/${props.item[0]}`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/cart/item/${props.item[0]}`);
 		data.value = response.data;
 		generateBilling("items", [data.value.productName, data.value.currentPrice, props.item[1], props.item[0]])
 	} catch (error) {

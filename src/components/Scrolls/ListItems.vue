@@ -42,7 +42,7 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const main = useMainStore();
-const { historyItems, likedItems } = storeToRefs(main);
+const { historyItems, likedItems, currentLanguage } = storeToRefs(main);
 
 const data = ref([]);
 const feature = ref([]) // feature for EmptyFeature prop
@@ -65,25 +65,25 @@ async function getListData() {
 			let linkParam = ""
 			switch (route.params.title) {
 				case "Top Offers":
-					linkParam = "https://api.jeswinsunsi.repl.co/v1/scrolls/list/dummy"
+					linkParam = `https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Smartphones":
-					linkParam = "https://api.jeswinsunsi.repl.co/v1/scrolls/list/dummy"
+					linkParam = `https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Tablets":
-					linkParam = "https://api.jeswinsunsi.repl.co/v1/scrolls/list/dummy"
+					linkParam = `https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Cases":
-					linkParam = "https://api.jeswinsunsi.repl.co/v1/scrolls/list/dummy"
+					linkParam = `https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Smartwatches":
-					linkParam = "https://api.jeswinsunsi.repl.co/v1/scrolls/list/dummy"
+					linkParam = `https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Headphones":
-					linkParam = "https://api.jeswinsunsi.repl.co/v1/scrolls/list/dummy"
+					linkParam = `https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Smartbands":
-					linkParam = "https://api.jeswinsunsi.repl.co/v1/scrolls/list/dummy"
+					linkParam = `https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 			}
 			const response = await axios.get(linkParam);
@@ -98,7 +98,7 @@ async function getListData() {
 	}
 	else if (route.params.fetchaddress === "stock") {
 		loading.value = true
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/navigation/search/${route.params.title}`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/navigation/search/${route.params.title}`);
 		data.value = response.data;
 		if (!data.value.length) {
 			loading.value = false

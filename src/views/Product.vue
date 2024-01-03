@@ -48,7 +48,7 @@ import axios from "axios";
 const route = useRoute();
 const popup = usePopup(); //eslint-disable-line
 const main = useMainStore();
-const { currentPopupState } = storeToRefs(main);
+const { currentPopupState, currentLanguage } = storeToRefs(main);
 const { addHistoryItem } = main;
 
 const data = ref(null);
@@ -58,7 +58,7 @@ async function getProductData() {
 	if (route.name == "Product") {
 		data.value = null;
 		try {
-			const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/products/${route.params.productId}`);
+			const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/products/${route.params.productId}`);
 			data.value = response.data;
 			selectedColor.value = data.value.deviceColor[0]
 			addHistoryItem({

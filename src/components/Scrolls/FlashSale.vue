@@ -24,6 +24,11 @@
 <script setup>
 import { ref } from "vue";
 import axios from "axios";
+import { useMainStore } from "../../store/useMainStore.js";
+import { storeToRefs } from "pinia";
+
+const main = useMainStore();
+const { currentLanguage } = storeToRefs(main);
 
 const props = defineProps({
 	rem: { type: Number, default: 2 },
@@ -59,7 +64,7 @@ const countdown = function () {
 const data = ref(null);
 async function getFlashsaleData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/scrolls/flashsale`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/flashsale`);
 		data.value = response.data;
 		endDate = new Date(data.value.endDate).getTime();
 		setInterval(countdown, seconds);

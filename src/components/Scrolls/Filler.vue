@@ -26,7 +26,7 @@ import { storeToRefs } from "pinia";
 
 const main = useMainStore();
 const { toggleViewLoaded } = main;
-const { hasViewLoaded } = storeToRefs(main);
+const { hasViewLoaded, currentLanguage } = storeToRefs(main);
 
 const props = defineProps({
 	rem: { type: Number, default: 2 },
@@ -38,7 +38,7 @@ let dataTwo = ref(null);
 
 async function getData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/scrolls/filler`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/filler`);
 		data.value = response.data;
 		const middleIndex = Math.ceil(data.value.length / 2); // split list into two to pass into two columns
 		dataOne.value = data.value.splice(0, middleIndex);

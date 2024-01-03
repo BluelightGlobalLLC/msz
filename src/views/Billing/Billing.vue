@@ -20,13 +20,13 @@ import { storeToRefs } from "pinia";
 import axios from "axios";
 
 const main = useMainStore();
-const { address, cartItems } = storeToRefs(main);
+const { address, cartItems, currentLanguage } = storeToRefs(main);
 
 async function send_mail() {
 	try {
 		const cartItemsJSON = JSON.stringify(cartItems.value)
 		const addressJSON = JSON.stringify(address.value)
-		const response = await axios.post(`https://api.jeswinsunsi.repl.co/v1/billing/reciept/${address.value.Email}/${cartItemsJSON}/${addressJSON}`);
+		const response = await axios.post(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/billing/reciept/${address.value.Email}/${cartItemsJSON}/${addressJSON}`);
 		console.log(response.data);
 	} catch (error) {
 		console.error(error);

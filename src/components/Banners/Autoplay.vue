@@ -29,6 +29,12 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import { ref } from "vue";
 import axios from "axios";
 
+import { useMainStore } from "../../store/useMainStore.js";
+import { storeToRefs } from "pinia";
+
+const main = useMainStore();
+const { currentLanguage } = storeToRefs(main);
+
 const props = defineProps({
 	rem: { type: Number, default: 2 },
 });
@@ -38,7 +44,7 @@ data.value = [["https://i.imgur.com/rtpuNsm.png", ""]]
 
 async function getData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/banners/autoplay`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/banners/autoplay`);
 		data.value = response.data;
 	} catch (error) {
 		console.error(error);

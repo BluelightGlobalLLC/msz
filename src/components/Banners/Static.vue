@@ -8,6 +8,12 @@
 import axios from "axios";
 import { ref } from "vue";
 
+import { useMainStore } from "../../store/useMainStore.js";
+import { storeToRefs } from "pinia";
+
+const main = useMainStore();
+const { currentLanguage } = storeToRefs(main);
+
 const props = defineProps({
 	rem: { type: Number, default: 2 },
 	height: { type: Number, default: 34 },
@@ -17,7 +23,7 @@ const props = defineProps({
 const data = ref(null);
 async function getData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/banners/static/${props.num}`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/banners/static/${props.num}`);
 		data.value = response.data;
 	} catch (error) {
 		console.error(error);

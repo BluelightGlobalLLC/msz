@@ -36,6 +36,11 @@ const props = defineProps({
 
 import { ref, computed, onActivated } from 'vue';
 import axios from "axios";
+import { useMainStore } from "../../store/useMainStore.js";
+import { storeToRefs } from "pinia";
+
+const main = useMainStore();
+const { currentLanguage } = storeToRefs(main);
 
 let searchTerm = ref('')
 let searchTermFocus = ref('')
@@ -72,7 +77,7 @@ const findDevices = computed(() => {
 const trendingData = ref(null);
 async function getTrendingData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/navigation/trending`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/navigation/trending`);
 		trendingData.value = response.data;
 	} catch (error) {
 		console.error(error);

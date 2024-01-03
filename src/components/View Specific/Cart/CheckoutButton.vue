@@ -53,7 +53,7 @@ import axios from "axios";
 const showPriceBreakdown = ref(false);
 
 const main = useMainStore();
-const { cartItems } = storeToRefs(main);
+const { cartItems, currentLanguage } = storeToRefs(main);
 const { generateBilling } = main;
 
 const data = ref(null);
@@ -69,7 +69,7 @@ function getProductIDs() {
 async function getData() {
 	try {
 		const response = await axios.get(
-			`https://api.jeswinsunsi.repl.co/v1/cart/data/${JSON.stringify(productIDs)}`
+			`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/cart/data/${JSON.stringify(productIDs)}`
 		);
 		data.value = response.data;
 		generateBilling("total", data.value.totalAmount.toFixed(2))

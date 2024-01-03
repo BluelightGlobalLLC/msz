@@ -5,6 +5,7 @@ import { Preferences } from '@capacitor/preferences';
 export const useMainStore = defineStore("main", {
 	state: () => ({
 		currentScrollDirection: false,
+		currentLanguage: "ar",
 		currentPopupState: false,
 		hasViewLoaded: { home: false, cart: false },
 		isVibrationsEnabled: true,
@@ -13,16 +14,19 @@ export const useMainStore = defineStore("main", {
 		historyItems: [],
 		categories: [],
 		brands: [],
-		address: {Region: "", Address: "", "House No.": "", Email: "", Phone: ""},
-		billing: {"total": 0, "subtotal": 0, "shipping": 0, "items": []},
+		address: { Region: "", Address: "", "House No.": "", Email: "", Phone: "" },
+		billing: { "total": 0, "subtotal": 0, "shipping": 0, "items": [] },
 		isUserLoggedIn: false
 	}),
 	actions: {
 		changeCurrentScrollDirection(newDirection) {
 			this.currentScrollDirection = newDirection;
 		},
-		login(){
-			this.isUserLoggedIn	= true;		
+		changeCurrentLanguage(newLanguage) {
+			this.currentLanguage = newLanguage;
+		},
+		login() {
+			this.isUserLoggedIn = true;
 		},
 		togglePopupState(stateBool) {
 			this.currentPopupState = stateBool;
@@ -46,7 +50,7 @@ export const useMainStore = defineStore("main", {
 			this.cartItems.splice(this.cartItems.indexOf(itemID), 1);
 			for (let index = 0; index < this.billing.items.length; index++) {
 				console.log(this.billing.items[index][3]);
-				if (this.billing.items[index][3] == itemID[0]){
+				if (this.billing.items[index][3] == itemID[0]) {
 					this.billing.items.splice(index, 1)
 				}
 			}
@@ -80,8 +84,8 @@ export const useMainStore = defineStore("main", {
 			});
 		},
 		async removeLikedItem(itemID) {
-			for (let element = 0; element < this.likedItems.length; element++){
-				if (this.likedItems[element].productId === itemID){
+			for (let element = 0; element < this.likedItems.length; element++) {
+				if (this.likedItems[element].productId === itemID) {
 					this.likedItems.splice(this.likedItems.indexOf(this.likedItems[element]));
 				}
 			}
@@ -98,16 +102,16 @@ export const useMainStore = defineStore("main", {
 			});
 		},
 		generateBilling(field, value) {
-			if (field === "items"){
+			if (field === "items") {
 				this.billing.items.push(value)
 			}
 			else {
-			this.billing[field] = value
+				this.billing[field] = value
 			}
 		},
 		async fetchCategories() {
 			try {
-				const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/categories`);
+				const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${this.currentLanguage}/categories`);
 				this.categories = response.data
 			} catch (error) {
 				console.error(error);
@@ -115,7 +119,7 @@ export const useMainStore = defineStore("main", {
 		},
 		async fetchBrands(category) {
 			try {
-				const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/brands/${category.toLowerCase()}`);
+				const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${this.currentLanguage}/brands/${category.toLowerCase()}`);
 				this.brands = response.data
 			} catch (error) {
 				console.error(error);

@@ -26,8 +26,9 @@ import { useMainStore } from "../../store/useMainStore.js";
 import { storeToRefs } from "pinia";
 
 const main = useMainStore();
+const { hasViewLoaded, currentLanguage } = storeToRefs(main);
 const { toggleViewLoaded } = main;
-const { hasViewLoaded } = storeToRefs(main);
+
 
 const props = defineProps({
 	rem: { type: Number, default: 2 },
@@ -52,7 +53,7 @@ function dotColor(event) {
 const data = ref(null);
 async function getData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/scrolls/product/${props.num}`);
+		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/product/${props.num}`);
 		data.value = response.data;
 		if (!hasViewLoaded.value.home) {
 			toggleViewLoaded("home");
