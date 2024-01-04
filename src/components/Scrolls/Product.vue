@@ -53,7 +53,7 @@ function dotColor(event) {
 const data = ref(null);
 async function getData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/product/${props.num}`);
+		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/scrolls/product/${props.num}`);
 		data.value = response.data;
 		if (!hasViewLoaded.value.home) {
 			toggleViewLoaded("home");
@@ -79,6 +79,7 @@ getData();
 	line-height: 1.5rem;
 	color: #2b2b2f;
 	margin-left: 0.8rem;
+	margin-right: 0.8rem;
 	margin-bottom: 0.8rem;
 }
 
@@ -87,6 +88,7 @@ getData();
 	justify-content: space-between;
 	width: 2.875rem;
 	margin-right: 1.75rem;
+	margin-left: 1.75rem;
 	margin-top: -0.8rem;
 }
 

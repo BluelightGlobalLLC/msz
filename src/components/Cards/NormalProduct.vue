@@ -145,6 +145,7 @@ function changeRoute(productId) {
 	background-color: #cad9ed;
 	color: #1164db;
 	margin-right: 0.375rem;
+	margin-left: 0.375rem;
 }
 
 .cart-button-text {
