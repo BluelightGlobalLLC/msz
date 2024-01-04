@@ -41,13 +41,14 @@ const props = defineProps({
 
 .padded {
 	padding-left: 0.8rem;
+	padding-right: 0.8rem;
 }
 
 .product-name {
 	font-size: 1.25rem;
 	font-weight: 600;
 	color: #454545;
-	margin-right: 7vw;
+	margin-right: 1vw;
 	line-height: 1.688rem;
 	margin-bottom: 0.37rem;
 }
@@ -68,6 +69,7 @@ const props = defineProps({
 	font-weight: 500;
 	color: #656565;
 	margin-left: 0.25rem;
+	margin-right: 0.25rem;
 }
 
 .ratings-icon {

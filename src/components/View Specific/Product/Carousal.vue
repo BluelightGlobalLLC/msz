@@ -9,7 +9,7 @@
 			arrows: false,
 			type: 'loop',
 			autoHeight: true,
-		}" class="scroll-container">
+		}" class="scroll-container" dir="ltr">
 			<SplideSlide v-for="image in props.images" :key="image" class="banner-wrapper">
 				<div class="bg-blur" :style="{ 'background-image': `url(${image})` }"></div>
 

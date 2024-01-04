@@ -5,7 +5,7 @@ import { Preferences } from '@capacitor/preferences';
 export const useMainStore = defineStore("main", {
 	state: () => ({
 		currentScrollDirection: false,
-		currentLanguage: "ar",
+		currentLanguage: "en",
 		currentPopupState: false,
 		hasViewLoaded: { home: false, cart: false },
 		isVibrationsEnabled: true,
@@ -111,7 +111,7 @@ export const useMainStore = defineStore("main", {
 		},
 		async fetchCategories() {
 			try {
-				const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${this.currentLanguage}/categories`);
+				const response = await axios.get(`https://api-fnt8.onrender.com//v1/${this.currentLanguage}/categories`);
 				this.categories = response.data
 			} catch (error) {
 				console.error(error);
@@ -119,7 +119,7 @@ export const useMainStore = defineStore("main", {
 		},
 		async fetchBrands(category) {
 			try {
-				const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${this.currentLanguage}/brands/${category.toLowerCase()}`);
+				const response = await axios.get(`https://api-fnt8.onrender.com//v1/${this.currentLanguage}/brands/${category.toLowerCase()}`);
 				this.brands = response.data
 			} catch (error) {
 				console.error(error);

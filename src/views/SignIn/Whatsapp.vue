@@ -48,7 +48,7 @@ const phoneEntered = ref(false)
 
 async function getOTP() {
     try {
-        await axios.post(`https://api.jeswinsunsi.repl.co/v1/login/otp/${whatsappNumber.value.value}`);
+        await axios.post(`https://api-fnt8.onrender.com/v1/login/otp/${whatsappNumber.value.value}`);
         phoneEntered.value = true
     } catch (error) {
         console.error(error);

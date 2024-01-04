@@ -38,6 +38,7 @@ onDeactivated(() => addToAddress(props.placeholder, data.value))
     justify-content: center;
     align-items: center;
     padding-left: 0.7rem;
+    padding-right: 0.7rem;
 }
 
 .input-field {

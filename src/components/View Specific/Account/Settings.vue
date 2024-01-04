@@ -108,6 +108,7 @@ async function logoutUser() {
 	height: max-content;
 	font-family: Poppins;
 	padding-left: 0.8rem;
+	padding-right: 0.8rem;
 	padding-top: 0.7rem;
 	color: #2b2b2f;
 }
@@ -132,6 +133,7 @@ async function logoutUser() {
 	height: 1.2rem;
 	width: 1.2rem;
 	margin-right: 0.4rem;
+	margin-left: 0.4rem;
 }
 
 a {
