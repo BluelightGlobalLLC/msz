@@ -58,7 +58,7 @@ async function getProductData() {
 	if (route.name == "Product") {
 		data.value = null;
 		try {
-			const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/products/${route.params.productId}`);
+			const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/products/${route.params.productId}`);
 			data.value = response.data;
 			selectedColor.value = data.value.deviceColor[0]
 			addHistoryItem({

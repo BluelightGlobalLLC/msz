@@ -26,7 +26,7 @@ async function send_mail() {
 	try {
 		const cartItemsJSON = JSON.stringify(cartItems.value)
 		const addressJSON = JSON.stringify(address.value)
-		const response = await axios.post(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/billing/reciept/${address.value.Email}/${cartItemsJSON}/${addressJSON}`);
+		const response = await axios.post(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/billing/reciept/${address.value.Email}/${cartItemsJSON}/${addressJSON}`);
 		console.log(response.data);
 	} catch (error) {
 		console.error(error);
@@ -59,5 +59,6 @@ async function send_mail() {
 	color: #686868;
 	border-radius: 0.5rem;
 	margin-top: -0.5rem;
+	margin-bottom: 2rem;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<div class="pagination">
+	<div class="pagination" dir="ltr">
 		<div style="display: flex">
 			<div v-for="category in categories" :key="category" class="category-name"
 				:class="{ categoryClicked: activeCategory == category }" @click="changeCategory($event, category)">

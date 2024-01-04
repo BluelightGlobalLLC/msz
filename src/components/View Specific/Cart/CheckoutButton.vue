@@ -69,7 +69,7 @@ function getProductIDs() {
 async function getData() {
 	try {
 		const response = await axios.get(
-			`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/cart/data/${JSON.stringify(productIDs)}`
+			`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/cart/data/${JSON.stringify(productIDs)}`
 		);
 		data.value = response.data;
 		generateBilling("total", data.value.totalAmount.toFixed(2))

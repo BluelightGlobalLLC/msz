@@ -52,6 +52,7 @@ const props = defineProps({
 	font-weight: 500;
 	font-size: 0.9rem;
 	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .customer-care-btns {
