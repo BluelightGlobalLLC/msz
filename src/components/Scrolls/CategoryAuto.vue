@@ -17,7 +17,7 @@
 			arrows: false,
 			pagination: false,
 			autoScroll: { speed: 0.7 },
-		}" class="scroll-container">
+		}" class="scroll-container" dir="ltr">
 			<SplideSlide v-for="category in categoriesOne" :key="category">
 				<div class="category">
 					<img :src="category" />
@@ -38,7 +38,7 @@
 			arrows: false,
 			pagination: false,
 			autoScroll: { speed: 0.7 },
-		}" class="scroll-container">
+		}" class="scroll-container" dir="ltr">
 			<SplideSlide v-for="category in categoriesTwo" :key="category">
 				<div class="category">
 					<img :src="category" />
@@ -82,7 +82,7 @@ const categoriesTwo = ref([
 
 <style scoped>
 .scroll-container {
-	margin-left: 0vw;
+	margin-right: 0vw;
 	margin-bottom: 0.5rem;
 }
 
@@ -113,6 +113,7 @@ const categoriesTwo = ref([
 	line-height: 1.5rem;
 	margin-bottom: 0.8rem;
 	margin-left: 0.8rem;
+	margin-right: 0.8rem;
 }
 
 .title {

@@ -38,7 +38,7 @@ let dataTwo = ref(null);
 
 async function getData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/scrolls/filler`);
+		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/scrolls/filler`);
 		data.value = response.data;
 		const middleIndex = Math.ceil(data.value.length / 2); // split list into two to pass into two columns
 		dataOne.value = data.value.splice(0, middleIndex);
@@ -60,6 +60,7 @@ getData();
 	font-weight: 600;
 	color: #2b2b2f;
 	margin-left: 0.8rem;
+	margin-right: 0.8rem;
 	z-index: 10;
 	background-color: #fff;
 }

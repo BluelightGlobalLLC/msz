@@ -77,7 +77,7 @@ const findDevices = computed(() => {
 const trendingData = ref(null);
 async function getTrendingData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/navigation/trending`);
+		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/navigation/trending`);
 		trendingData.value = response.data;
 	} catch (error) {
 		console.error(error);
@@ -157,6 +157,7 @@ input {
 	height: 1.3rem;
 	width: 1.3rem;
 	margin-right: 0.4rem;
+	margin-left: 0.4rem;
 }
 
 .arrow-back-wrapper {

@@ -44,6 +44,7 @@ const data = ref([
 	line-height: 1.5rem;
 	color: #2b2b2f;
 	margin-left: 0.8rem;
+	margin-right: 0.8rem;
 	position: relative;
 	top: 0.88rem;
 	margin-bottom: 0rem;

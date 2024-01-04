@@ -1,5 +1,5 @@
 <template>
-	<div class="wrapper">
+	<div class="wrapper" dir="ltr">
 		<Splide :options="{
 			rewind: true,
 			gap: '3rem',

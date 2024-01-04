@@ -10,7 +10,7 @@
 			arrows: false,
 			type: 'loop',
 			pagination: false,
-		}" class="scroll-container">
+		}" class="scroll-container" dir="ltr">
 
 			<SplideSlide v-for="image in data" :key="image">
 				<a :href="image[1]" target="_blank">
@@ -44,7 +44,7 @@ data.value = [["https://i.imgur.com/rtpuNsm.png", ""]]
 
 async function getData() {
 	try {
-		const response = await axios.get(`https://api.jeswinsunsi.repl.co/v1/${currentLanguage.value}/banners/autoplay`);
+		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/banners/autoplay`);
 		data.value = response.data;
 	} catch (error) {
 		console.error(error);
