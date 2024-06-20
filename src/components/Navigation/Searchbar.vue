@@ -18,7 +18,8 @@
 		</div>
 		<div class="results" v-if="findDevices.length">
 			<h3 class="num-results">Showing {{ findDevices.length }} of {{ devices.length }} results</h3>
-			<div class="result" v-for="device in findDevices" :key="device" @click="$router.push(`/list/stock/${device}`)">
+			<div class="result" v-for="device in findDevices" :key="device"
+				@click="$router.push(`/list/stock/${device}`)">
 				{{ device }}</div>
 		</div>
 		<div class="results" v-if="!findDevices.length && props.results">

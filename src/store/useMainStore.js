@@ -5,7 +5,7 @@ import { Preferences } from '@capacitor/preferences';
 export const useMainStore = defineStore("main", {
 	state: () => ({
 		currentScrollDirection: false,
-		currentLanguage: "ar",
+		currentLanguage: "en",
 		currentPopupState: false,
 		hasViewLoaded: { home: false, cart: false },
 		isVibrationsEnabled: true,

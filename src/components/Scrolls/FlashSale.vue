@@ -5,10 +5,11 @@
 			<span>
 				<h1 class="title" v-if="currentLanguage == 'en'">Limited Time Grabs</h1>
 				<h1 class="title" v-if="currentLanguage == 'ar'">عربة التسوق</h1>
-				<h1 class="subtitle" v-if="currentLanguage == 'en'">Ends in {{ hoursC }}h:{{ minutesC }}m:{{ secondsC }}s
+				<h1 class="subtitle" v-if="currentLanguage == 'en'">Ends in {{ hoursC }}h:{{ minutesC }}m:{{ secondsC
+					}}s
 				</h1>
 				<h1 class="subtitle" v-if="currentLanguage == 'ar'">تنتهي صلاحيته خلال {{ hoursC }}h:{{ minutesC }}m:{{
-					secondsC }}s</h1>
+		secondsC }}s</h1>
 			</span>
 		</div>
 		<div class="scroll-container">
@@ -167,6 +168,7 @@ getFlashsaleData();
 .header-wrapper {
 	display: flex;
 	justify-content: space-between;
+	z-index: 20;
 }
 
 .falling-stars {

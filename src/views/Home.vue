@@ -45,7 +45,14 @@ const main = useMainStore();
 
 // DEPRECATED (HIDES NAV ON SCROLL) const hideNav = useHideNav(); //eslint-disable-line
 const popup = usePopup(); //eslint-disable-line
-const { currentPopupState, hasViewLoaded } = storeToRefs(main);
+const { currentPopupState, hasViewLoaded, currentLanguage } = storeToRefs(main);
+
+if (currentLanguage.value == "ar") {
+	document.body.setAttribute('dir', 'rtl')
+}
+else if (currentLanguage.value == "en") {
+	document.body.setAttribute('dir', 'ltr')
+}
 </script>
 
 <style scoped>
