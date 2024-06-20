@@ -4,9 +4,13 @@
 			<parent-button class="parent-btn" :class="{ expandParent: showPriceBreakdown }">
 				<div class="checkout-wrapper">
 					<div class="price-summary">
-						<div class="amount-title">Total Amount <span class="small-text">VAT Inclusive</span></div>
+						<div class="amount-title" v-if="currentLanguage == 'en'">Total Amount <span class="small-text">VAT
+								Inclusive</span></div>
+						<div class="amount-title" v-if="currentLanguage == 'ar'">الاجمالي المستحق <span
+								class="small-text">شامل ضريبة القيمة المضافة</span></div>
 						<div class="amount-wrapper">
-							<h1 class="amount">OMR {{ data.totalAmount.toFixed(2) }}</h1>
+							<h1 class="amount" v-if="currentLanguage == 'en'">OMR {{ data.totalAmount.toFixed(2) }}</h1>
+							<h1 class="amount" v-if="currentLanguage == 'ar'">رع {{ data.totalAmount.toFixed(2) }}</h1>
 							<img class="expand-btn"
 								:class="{ rotateArrowUp: showPriceBreakdown, rotateArrowDown: !showPriceBreakdown }"
 								src="../../../assets/Arrows/expand.png" @click="showPriceBreakdown = !showPriceBreakdown" />
@@ -14,11 +18,11 @@
 					</div>
 					<div class="price-breakdown-wrapper">
 						<div class="breakdowns">
-							<div class="breakdown">
+							<div class="breakdown" v-if="currentLanguage == 'en'">
 								<h1 class="breakdown-title">Subtotal</h1>
 								<h1 class="breakdown-value">RO {{ data.subtotalAmount.toFixed(2) }}</h1>
 							</div>
-							<div class="breakdown">
+							<div class="breakdown" v-if="currentLanguage == 'en'">
 								<h1 class="breakdown-title">Shipping Fee</h1>
 								<h1 class="breakdown-value">
 									{{
@@ -28,16 +32,35 @@
 									}}
 								</h1>
 							</div>
-							<div class="breakdown">
+							<div class="breakdown" v-if="currentLanguage == 'ar'">
+								<h1 class="breakdown-title">المجموع الفرعي</h1>
+								<h1 class="breakdown-value">رع {{ data.subtotalAmount.toFixed(2) }}</h1>
+							</div>
+							<div class="breakdown" v-if="currentLanguage == 'ar'">
+								<h1 class="breakdown-title">مصاريف الشحن</h1>
+								<h1 class="breakdown-value">
+									{{
+										data.shippingAmount == "حر / Free"
+										? data.shippingAmount
+										: "رع " + data.shippingAmount
+									}}
+								</h1>
+							</div>
+							<div class="breakdown" v-if="currentLanguage == 'en'">
 								<h1 class="breakdown-title">Amount Saved</h1>
 								<h1 class="breakdown-value">RO {{ data.savedAmount.toFixed(2) }}</h1>
+							</div>
+							<div class="breakdown" v-if="currentLanguage == 'ar'">
+								<h1 class="breakdown-title">المبلغ المحفوظة</h1>
+								<h1 class="breakdown-value">رع {{ data.savedAmount.toFixed(2) }}</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 			</parent-button>
 			<div class="checkout-btn" @click="$router.push('/billing')">
-				<h1 class="btn-text">Proceed to Checkout</h1>
+				<h1 class="btn-text" v-if="currentLanguage == 'en'">Proceed to Checkout</h1>
+				<h1 class="btn-text" v-if="currentLanguage == 'ar'">المتابعة إلى الدفع</h1>
 			</div>
 		</div>
 	</span>

@@ -1,11 +1,15 @@
 <template>
 	<parent-button>
 		<div class="buy-btn" @click="addToCart(props.id); $router.push('/cart');">
-			<h1 class="btn-text">Buy now</h1>
+			<h1 class="btn-text" v-if="currentLanguage == 'en'">Buy now</h1>
+			<h1 class="btn-text" v-if="currentLanguage == 'ar'">اشتري الآن</h1>
 		</div>
 
-		<div class="atc-btn" @click="addToCart(props.id)">
+		<div v-if="currentLanguage == 'en'" class="atc-btn" @click="addToCart(props.id)">
 			<h1 class="btn-text">{{ cartText }}</h1>
+		</div>
+		<div v-if="currentLanguage == 'ar'" class="atc-btn" @click="addToCartAr(props.id)">
+			<h1 class="btn-text">{{ cartTextAr }}</h1>
 		</div>
 	</parent-button>
 </template>
@@ -25,12 +29,24 @@ const props = defineProps({
 
 const main = useMainStore()
 const { togglePopupState, addCartItem } = main
-const { isVibrationsEnabled } = storeToRefs(main)
+const { isVibrationsEnabled, currentLanguage } = storeToRefs(main)
 
 let cartText = ref("Add to cart")
 async function addToCart(productId) {
 	if (cartText.value != "Added to Cart!") {
 		cartText.value = "Added to Cart!"
+		togglePopupState(true)
+		addCartItem([productId, props.color])
+		if (isVibrationsEnabled.value === true) {
+			await Haptics.vibrate();
+		}
+	}
+}
+
+let cartTextAr = ref("إضافة إلى السلة")
+async function addToCartAr(productId) {
+	if (cartText.value != "تمت إضافة هذا البند إلى عربة التسوق") {
+		cartText.value = "تمت إضافة هذا البند إلى عربة التسوق"
 		togglePopupState(true)
 		addCartItem([productId, props.color])
 		if (isVibrationsEnabled.value === true) {

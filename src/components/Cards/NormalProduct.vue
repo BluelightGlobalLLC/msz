@@ -19,9 +19,13 @@
 			<div class="name-wrapper">
 				<h3 class="name">{{ props.data.productName }}</h3>
 			</div>
-			<div class="price-wrapper">
+			<div class="price-wrapper" v-if="currentLanguage == 'en'">
 				<h1 class="price">OMR {{ props.data.currentPrice }}</h1>
 				<h1 v-if="props.data.oldPrice" class="old-price">OMR {{ props.data.oldPrice }}</h1>
+			</div>
+			<div class="price-wrapper" v-if="currentLanguage == 'ar'">
+				<h1 class="price">رع {{ props.data.currentPrice }}</h1>
+				<h1 v-if="props.data.oldPrice" class="old-price">رع {{ props.data.oldPrice }}</h1>
 			</div>
 		</div>
 	</div>
@@ -44,7 +48,7 @@ const props = defineProps({
 
 const main = useMainStore()
 const { togglePopupState, addCartItem, addLikedItem, removeLikedItem } = main
-const { isVibrationsEnabled } = storeToRefs(main)
+const { isVibrationsEnabled, currentLanguage } = storeToRefs(main)
 const router = useRouter()
 
 let cartText = ref("Add to cart")

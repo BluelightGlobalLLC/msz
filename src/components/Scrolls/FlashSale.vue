@@ -3,8 +3,12 @@
 		<img src="../../assets/FlashSale/fallingstar.png" class="falling-stars" />
 		<div class="header-wrapper">
 			<span>
-				<h1 class="title">Limited Time Grabs</h1>
-				<h1 class="subtitle">Ends in {{ hoursC }}h:{{ minutesC }}m:{{ secondsC }}s</h1>
+				<h1 class="title" v-if="currentLanguage == 'en'">Limited Time Grabs</h1>
+				<h1 class="title" v-if="currentLanguage == 'ar'">عربة التسوق</h1>
+				<h1 class="subtitle" v-if="currentLanguage == 'en'">Ends in {{ hoursC }}h:{{ minutesC }}m:{{ secondsC }}s
+				</h1>
+				<h1 class="subtitle" v-if="currentLanguage == 'ar'">تنتهي صلاحيته خلال {{ hoursC }}h:{{ minutesC }}m:{{
+					secondsC }}s</h1>
 			</span>
 		</div>
 		<div class="scroll-container">

@@ -1,7 +1,8 @@
 <template>
 	<div class="customer-care-wrapper" :style="{ 'margin-bottom': props.rem + 'rem' }">
-		<h1>Customer Service</h1>
-		<div class="customer-care-btns">
+		<h1 v-if="currentLanguage == 'en'">Customer Service</h1>
+		<h1 v-if="currentLanguage == 'ar'">يدعم</h1>
+		<div class="customer-care-btns" v-if="currentLanguage == 'en'">
 			<div class="customer-care-btn">
 				<a href="https://wa.me/91515555?text=Hey! I need support using the MSouq App.">
 					<img class="customer-care-btn-img support-btn-img" src="../../../assets/CustomerCare/support.svg"
@@ -19,9 +20,25 @@
 				<img class="customer-care-btn-img" src="../../../assets/CustomerCare/feedback.svg" alt="" />
 				<h3>Feedback</h3>
 			</div>
+		</div>
+		<!--ARABIC-->
+		<div class="customer-care-btns" v-if="currentLanguage == 'ar'">
 			<div class="customer-care-btn">
-				<img class="customer-care-btn-img" src="../../../assets/CustomerCare/rate.svg" alt="" />
-				<h3>Rate</h3>
+				<a href="https://wa.me/91515555?text=Hey! I need support using the MSouq App.">
+					<img class="customer-care-btn-img support-btn-img" src="../../../assets/CustomerCare/support.svg"
+						alt="" />
+					<h2 class="name">يدعم</h2>
+				</a>
+			</div>
+			<div class="customer-care-btn">
+				<a href="https://wa.me/91515555?text=Hey! I want to return a product I've purchased.">
+					<img class="customer-care-btn-img" src="../../../assets/CustomerCare/returns.svg" alt="" />
+					<h2 class="name">عائدات</h2>
+				</a>
+			</div>
+			<div class="customer-care-btn">
+				<img class="customer-care-btn-img" src="../../../assets/CustomerCare/feedback.svg" alt="" />
+				<h3>تعليق</h3>
 			</div>
 		</div>
 	</div>
@@ -31,6 +48,12 @@
 const props = defineProps({
 	rem: { type: Number, default: 2 },
 });
+
+import { useMainStore } from "../../../store/useMainStore";
+import { storeToRefs } from "pinia";
+
+const main = useMainStore();
+const { currentLanguage } = storeToRefs(main);
 </script>
 
 <style scoped>

@@ -1,9 +1,17 @@
 <template>
 	<div class="scroll-wrapper" :style="{ 'margin-bottom': props.rem + 'rem' }">
 		<h1 class="title">{{ props.title }}</h1>
-		<div class="scroll-container">
+		<div class="scroll-container" v-if="currentLanguage == 'en'">
 			<div class="scroll-padding"></div>
 			<div v-for="item in data" :key="item" @click="$router.push('/list/dbase/Trending ' + item.title)">
+				<div class="category-card scroll-item" :style="{ 'background-image': 'url(' + item.image + ')' }">
+					<h3 class="category-name">{{ item.title }}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="scroll-container" v-if="currentLanguage == 'ar'">
+			<div class="scroll-padding"></div>
+			<div v-for="item in dataAr" :key="item" @click="$router.push('/list/dbase/Trending ' + item.title)">
 				<div class="category-card scroll-item" :style="{ 'background-image': 'url(' + item.image + ')' }">
 					<h3 class="category-name">{{ item.title }}</h3>
 				</div>
@@ -14,6 +22,11 @@
 
 <script setup>
 import { ref } from "vue";
+import { useMainStore } from "../../store/useMainStore.js";
+import { storeToRefs } from "pinia";
+
+const main = useMainStore();
+const { currentLanguage } = storeToRefs(main);
 
 const props = defineProps({
 	rem: { type: Number, default: 2 },
@@ -27,6 +40,15 @@ const data = ref([
 	{ title: "Smartwatches", image: "https://i.imgur.com/Paoc3IC.png" },
 	{ title: "Headphones", image: "https://i.imgur.com/xIO4U8C.png" },
 	{ title: "Smartbands", image: "https://i.imgur.com/enCMTwG.png" },
+]);
+
+const dataAr = ref([
+	{ title: "الهواتف", image: "https://i.imgur.com/Kv4PuQ9.png" },
+	{ title: "الأجهزة اللوحية", image: "https://i.imgur.com/U3UVSJJ.png" },
+	{ title: "غطاء الهاتف", image: "https://i.imgur.com/lqRWKWr.png" },
+	{ title: "الساعات الذكية", image: "https://i.imgur.com/Paoc3IC.png" },
+	{ title: "سماعات الرأس", image: "https://i.imgur.com/xIO4U8C.png" },
+	{ title: "العصابات الذكية", image: "https://i.imgur.com/enCMTwG.png" },
 ]);
 </script>
 

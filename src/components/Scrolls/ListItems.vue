@@ -20,7 +20,8 @@
 							src="../../assets/viewList/star.png" alt="" />
 					</div>
 					<div class="spacing"></div>
-					<h4 v-if="item.oldPrice" class="old-price">OMR {{ item.oldPrice }}</h4>
+					<h4 v-if="item.oldPrice && currentLanguage == 'en'" class="old-price">OMR {{ item.oldPrice }}</h4>
+					<h4 v-if="item.oldPrice && currentLanguage == 'ar'" class="old-price">رع {{ item.oldPrice }}</h4>
 					<h2 class="new-price">{{ item.currentPrice == "Out Of Stock" ? item.currentPrice : `OMR
 						${item.currentPrice}` }}</h2>
 				</div>

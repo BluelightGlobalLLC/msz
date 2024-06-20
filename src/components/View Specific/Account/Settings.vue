@@ -3,69 +3,75 @@
 		<popup-settings v-show="isPopupShown" @click="togglePopup(false, false, false)" :setting="propSetting"
 			:values="propValues" />
 		<div class="wrapper">
-			<h1 class="title">Settings</h1>
+			<h1 class="title" v-if="currentLanguage == 'en'">إعدادات</h1>
+			<h1 class="title" v-if="currentLanguage == 'ar'"></h1>
 			<div class="link">
 				<img src="../../../assets/Links/language.svg" />
-				<h2 class="name">Language</h2>
+				<h2 class="name" v-if="currentLanguage == 'en'">Language</h2>
+				<h2 class="name" v-if="currentLanguage == 'ar'">لغة</h2>
 			</div>
 			<div class="link">
 				<img src="../../../assets/Links/notifications.svg" />
-				<h2 class="name">Notifications</h2>
+				<h2 class="name" v-if="currentLanguage == 'en'">Notifications</h2>
+				<h2 class="name" v-if="currentLanguage == 'ar'">إشعارات</h2>
 			</div>
 			<div class="link"
 				@click="togglePopup(true, 'vibrations', [['Enabled', isVibrationsEnabled ? 'selected' : ''], ['Disabled', !isVibrationsEnabled ? 'selected' : '']])">
 				<img src="../../../assets/Links/vibrations.svg" />
-				<h2 class="name">Vibrations</h2>
+				<h2 class="name" v-if="currentLanguage == 'en'">Vibrations</h2>
+				<h2 class="name" v-if="currentLanguage == 'ar'">الاهتزازات</h2>
 			</div>
-			<div class="link" @click="logoutUser">
-				<img src="../../../assets/Links/logout.svg" />
-				<h2 class="name">Logout</h2>
-			</div>
-			<h1 class="title" style="margin-top: 1.6rem">Customer Support</h1>
+			<h1 class="title" v-if="currentLanguage == 'en'" style="margin-top: 1.6rem">Customer Support</h1>
+			<h1 class="title" v-if="currentLanguage == 'ar'" style="margin-top: 1.6rem">يدعم</h1>
 			<div class="link">
 				<img src="../../../assets/Links/contact.svg" />
 				<a href="https://wa.me/91515555">
-					<h2 class="name">Contact Us</h2>
+					<h2 class="name" v-if="currentLanguage == 'en'">Contact Us</h2>
+					<h2 class="name" v-if="currentLanguage == 'en'">اتصل بنا</h2>
 				</a>
 			</div>
 			<div class="link">
 				<img src="../../../assets/Links/bug.svg" />
-				<h2 class="name">Report a Bug</h2>
+				<h2 class="name" v-if="currentLanguage == 'en'">Report a Bug</h2>
+				<h2 class="name" v-if="currentLanguage == 'ar'">الإبلاغ عن خطأ</h2>
 			</div>
 			<div class="link">
 				<img src="../../../assets/Links/faqs.svg" />
-				<h2 class="name">FAQs</h2>
+				<h2 class="name" v-if="currentLanguage == 'en'">FAQs</h2>
+				<h2 class="name" v-if="currentLanguage == 'ar'">الأسئلة الشائعة</h2>
 			</div>
 
-			<h1 class="title" style="margin-top: 1.6rem">About Us</h1>
+			<h1 class="title" style="margin-top: 1.6rem" v-if="currentLanguage == 'en'">About Us</h1>
+			<h1 class="title" style="margin-top: 1.6rem" v-if="currentLanguage == 'ar'">معلومات عنا</h1>
 			<div class="link">
 				<img src="../../../assets/Links/outlets.svg" />
 				<a href="https://wa.me/91515555?text=Hey! Where are your stores located?">
-					<h2 class="name">Store Locations</h2>
+					<h2 class="name" v-if="currentLanguage == 'en'">Store Locations</h2>
+					<h2 class="name" v-if="currentLanguage == 'ar'">مواقع المتجر</h2>
 				</a>
 			</div>
-			<div class="link">
-				<img src="../../../assets/Links/brands.svg" />
-				<h2 class="name">About App</h2>
-			</div>
 
-			<h1 class="title" style="margin-top: 1.6rem">Socials</h1>
+			<h1 class="title" style="margin-top: 1.6rem" v-if="currentLanguage == 'en'">Socials</h1>
+			<h1 class="title" style="margin-top: 1.6rem" v-if="currentLanguage == 'ar'">اتصل بنا</h1>
 			<div class="link">
 				<img src="../../../assets/Links/instagram.svg" />
 				<a href="instagram://user?username=msouq_om">
-					<h2 class="name">Instagram</h2>
+					<h2 class="name" v-if="currentLanguage == 'en'">Instagram</h2>
+					<h2 class="name" v-if="currentLanguage == 'ar'">انستغرام</h2>
 				</a>
 			</div>
 			<div class="link">
 				<img src="../../../assets/Links/facebook.svg" />
 				<a href="https://www.facebook.com/msouqglobal">
-					<h2 class="name">Facebook</h2>
+					<h2 class="name" v-if="currentLanguage == 'en'">Facebook</h2>
+					<h2 class="name" v-if="currentLanguage == 'ar'">فيسبوك</h2>
 				</a>
 			</div>
 			<div class="link">
 				<img src="../../../assets/Links/whatsapp.svg" />
 				<a href="https://wa.me/91515555">
-					<h2 class="name">WhatsApp</h2>
+					<h2 class="name" v-if="currentLanguage == 'en'">WhatsApp</h2>
+					<h2 class="name" v-if="currentLanguage == 'ar'">واتس اب</h2>
 				</a>
 			</div>
 		</div>
@@ -78,12 +84,11 @@ import { ref } from 'vue';
 import { useMainStore } from '../../../store/useMainStore';
 import PopupSettings from '../../Popups/PopupSettings.vue';
 import { useRouter } from 'vue-router';
-import { Preferences } from "@capacitor/preferences"
 
 
 const router = useRouter()
 const main = useMainStore()
-const { isVibrationsEnabled } = storeToRefs(main)
+const { isVibrationsEnabled, currentLanguage } = storeToRefs(main)
 
 const propValues = ref(null)
 const propSetting = ref(null)
@@ -92,11 +97,6 @@ function togglePopup(boolValue, component, values) {
 	propSetting.value = component
 	propValues.value = values
 	isPopupShown.value = boolValue
-}
-
-async function logoutUser() {
-	await Preferences.clear()
-	router.push('/')
 }
 </script>
 

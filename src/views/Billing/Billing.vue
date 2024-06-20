@@ -1,11 +1,16 @@
 <template>
 	<div class="container">
-		<h1 class="title">Order Summary</h1>
+		<h1 class="title" v-if="currentLanguage == 'en'">Order Summary</h1>
+		<h1 class="title" v-if="currentLanguage == 'ar'">ملخص الطلب</h1>
 		<content-items />
 		<confirm-button v-if="address.Region && address['House No.'] && address.Email && address.Phone" @click="send_mail"
 			confirmroute="/billing/confirmed" cancelroute="/billing" />
-		<div class="add-address" v-if="!address.Region && !address.Phone" @click="$router.push('/billing/address')"
-			route="/billing">
+		<div class="add-address" v-if="!address.Region && !address.Phone && currentLanguage == 'en'"
+			@click="$router.push('/billing/address')" route="/billing">
+			Add a New Address to Continue
+		</div>
+		<div class="add-address" v-if="!address.Region && !address.Phone && currentLanguage == 'ar'"
+			@click="$router.push('/billing/address')" route="/billing">
 			Add a New Address to Continue
 		</div>
 	</div>

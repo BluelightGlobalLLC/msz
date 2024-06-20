@@ -1,11 +1,13 @@
 <template>
 	<div class="btn-wrapper">
 		<div class="cancel-btn" @click="$router.push(props.cancelroute)">
-			<h1 class="btn-text">Cancel</h1>
+			<h1 v-if="currentLanguage == 'en'" class="btn-text">Cancel</h1>
+			<h1 v-if="currentLanguage == 'ar'" class="btn-text">إلغاء</h1>
 		</div>
 
 		<div class="confirm-btn" @click="$router.push(props.confirmroute)">
-			<h1 class="btn-text">Confirm</h1>
+			<h1 v-if="currentLanguage == 'en'" class="btn-text">Confirm</h1>
+			<h1 v-if="currentLanguage == 'ar'" class="btn-text">يتأكد</h1>
 		</div>
 	</div>
 </template>
@@ -15,6 +17,10 @@ const props = defineProps({
 	confirmroute: { type: String },
 	cancelroute: { type: String }
 })
+import { useMainStore } from "../../store/useMainStore"
+import { storeToRefs } from "pinia";
+const main = useMainStore()
+const { currentLanguage } = storeToRefs(main)
 </script>
 
 <style scoped>

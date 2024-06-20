@@ -3,12 +3,23 @@
 		<h2 class="heading">Items</h2>
 		<div v-for="item in billing.items" :key="item" class="item-wrapper">
 			<h3 class="item-name">{{ item[0] }} {{ item[2] }}</h3>
-			<h4 class="item-price">OMR {{ item[1] }} VAT Inclusive</h4>
+			<h4 class="item-price" v-if="currentLanguage == 'en'">OMR {{ item[1] }} VAT Inclusive</h4>
+			<h4 class="item-price" v-if="currentLanguage == 'ar'">رع {{ item[1] }} شامل ضريبة القيمة المضافة</h4>
 		</div>
 		<div class="line"></div>
-		<h2 class="heading">Shipping Address</h2>
-		<div class="item-wrapper">
-			<!--<h4 v-for="item in 3" :key="item" class="address">Dar Al Zain, As' Seeb</h4>-->
+		<h2 class="heading" v-if="currentLanguage == 'en'">Shipping Address</h2>
+		<h2 class="heading" v-if="currentLanguage == 'ar'">عنوان التسليم</h2>
+		<div class="item-wrapper" v-if="currentLanguage == 'ar'">
+			<h4 class="address" v-if="address.Address">{{ address.Address }}</h4>
+			<h4 class="address" v-if="address['House No.']">رقم المنزل {{ address["House No."] }}, {{ address.Region
+			}}</h4>
+			<h4 class="address" v-if="address.Email">{{ address.Email }}</h4>
+			<h4 class="address" v-if="address.Phone">رقم التليفون {{ address.Phone }}</h4>
+			<h4 class="address" v-if="!address.Address">No Shipping Address found</h4>
+			<h4 class="new-address" @click="$router.push('/billing/address')"><span class="orange">أضف عنوان شحن جديد</span>
+			</h4>
+		</div>
+		<div class="item-wrapper" v-if="currentLanguage == 'en'">
 			<h4 class="address" v-if="address.Address">{{ address.Address }}</h4>
 			<h4 class="address" v-if="address['House No.']">House No. {{ address["House No."] }}, {{ address.Region
 			}}</h4>
@@ -19,14 +30,14 @@
 					Address</span></h4>
 		</div>
 		<div class="line"></div>
-		<div class="prices">
+		<div class="prices" v-if="currentLanguage == 'en'">
 			<div class="row">
 				<h4 class="item-price">Subtotal</h4>
 				<h4 class="item-price">OMR {{ billing.subtotal }}</h4>
 			</div>
 			<div class="row">
 				<h4 class="item-price">Shipping Fee</h4>
-				<h4 class="item-price">{{ billing.shipping }}</h4>
+				<h4 class="item-price">OMR {{ billing.shipping }}</h4>
 			</div>
 			<div class="row">
 				<h4 class="item-price">Taxes</h4>
@@ -35,6 +46,25 @@
 			<div class="row">
 				<h4 class="total-price">Total Due</h4>
 				<h4 class="total-price">OMR {{ billing.total }}</h4>
+			</div>
+		</div>
+		<!--ARABIC-->
+		<div class="prices" v-if="currentLanguage == 'ar'">
+			<div class="row">
+				<h4 class="item-price">المجموع الفرعي</h4>
+				<h4 class="item-price">رع {{ billing.subtotal }}</h4>
+			</div>
+			<div class="row">
+				<h4 class="item-price">مصاريف الشحن</h4>
+				<h4 class="item-price">رع {{ billing.shipping }}</h4>
+			</div>
+			<div class="row">
+				<h4 class="item-price">القيمة الضريبية</h4>
+				<h4 class="item-price">رع {{ billing.subtotal * 5 / 100 }}</h4>
+			</div>
+			<div class="row">
+				<h4 class="total-price">الاجمالي المستحق</h4>
+				<h4 class="total-price">رع {{ billing.total }}</h4>
 			</div>
 		</div>
 	</div>
@@ -46,7 +76,7 @@ import { storeToRefs } from "pinia";
 
 
 const main = useMainStore();
-const { billing, address } = storeToRefs(main);
+const { billing, address, currentLanguage } = storeToRefs(main);
 
 
 

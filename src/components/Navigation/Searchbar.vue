@@ -9,7 +9,10 @@
 					<img src="../../assets/Navigation/searchicon.png" alt="search" class="search-icon" />
 				</div>
 				<form @submit.prevent="$router.push(`/list/stock/${searchTerm}`)">
-					<input type="text" :placeholder="props.title" v-model="searchTerm" ref="searchTermFocus">
+					<input type="text" :placeholder="props.title" v-model="searchTerm" ref="searchTermFocus"
+						v-if="currentLanguage == 'en'">
+					<input type="text" :placeholder="props.titleAr" v-model="searchTerm" ref="searchTermFocus"
+						v-if="currentLanguage == 'ar'">
 				</form>
 			</div>
 		</div>
@@ -30,6 +33,7 @@
 const props = defineProps({
 	navigateBack: { type: Boolean },
 	title: { type: String, default: "Search for products & brands" },
+	titleAr: { type: String, default: "البحث عن المنتجات" },
 	results: { type: Boolean, default: false }
 });
 

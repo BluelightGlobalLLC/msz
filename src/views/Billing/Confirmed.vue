@@ -1,9 +1,12 @@
 <template>
     <div class="container">
         <img src="../../assets/Misc/confirmed.gif" alt="Order Confirmed">
-        <h1>Your Order Has Been Placed!</h1>
-        <h2>Our representative will reach out to you shortly to confirm the order.</h2>
-        <h3>Redirecting you back to Home in {{ seconds }}</h3>
+        <h1 v-if="currentLanguage == 'en'">Your Order Has Been Placed!</h1>
+        <h2 v-if="currentLanguage == 'en'">Our representative will reach out to you shortly to confirm the order.</h2>
+        <h3 v-if="currentLanguage == 'en'">Redirecting you back to Home in {{ seconds }}</h3>
+        <h1 v-if="currentLanguage == 'ar'">وقد وضعت طلبك</h1>
+        <h2 v-if="currentLanguage == 'ar'">سوف يقوم M.Souq بالاتصال بك قريبا</h2>
+        <h3 v-if="currentLanguage == 'ar'">Redirecting you back to Home in {{ seconds }}</h3>
     </div>
 </template>
 

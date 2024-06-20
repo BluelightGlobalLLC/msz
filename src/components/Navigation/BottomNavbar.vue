@@ -4,18 +4,21 @@
 			<div class="button-wrapper" @click.prevent="navTo('Home')">
 				<img :class="{ active: activeIcon == 'Home' }" class="icon-modified"
 					src="../../assets/Navigation/home.png" />
-				<h3 v-show="activeIcon == 'Home'" class="button-text">Home</h3>
+				<h3 v-if="currentLanguage == 'en'" v-show="activeIcon == 'Home'" class="button-text">Home</h3>
+				<h3 v-if="currentLanguage == 'ar'" v-show="activeIcon == 'Home'" class="button-text">بيت</h3>
 			</div>
 
 			<div class="button-wrapper" @click.prevent="navTo('Brands')">
 				<img :class="{ active: activeIcon == 'Brands' }" class="icon-modified"
 					src="../../assets/Navigation/brands.png" />
-				<h3 v-show="activeIcon == 'Brands'" class="button-text">Brands</h3>
+				<h3 v-if="currentLanguage == 'en'" v-show="activeIcon == 'Brands'" class="button-text">Brands</h3>
+				<h3 v-if="currentLanguage == 'ar'" v-show="activeIcon == 'Brands'" class="button-text">ماركة</h3>
 			</div>
 
 			<div class="button-wrapper" @click.prevent="navTo('Cart')">
 				<img :class="{ active: activeIcon == 'Cart' }" src="../../assets/Navigation/navcart.png" />
-				<h3 v-show="activeIcon == 'Cart'" class="button-text">Cart</h3>
+				<h3 v-show="activeIcon == 'Cart'" class="button-text" v-if="currentLanguage == 'en'">Cart</h3>
+				<h3 v-show="activeIcon == 'Cart'" class="button-text" v-if="currentLanguage == 'ar'">عربة التسوق</h3>
 				<div v-show="cartItems.length != 0" class="quantity" :class="{ 'move-up': activeIcon == 'Cart' }">
 					{{ cartItems.length }}
 				</div>
@@ -24,7 +27,8 @@
 			<div class="button-wrapper" @click.prevent="navTo('Account')">
 				<img :class="{ active: activeIcon == 'Account' }" class="icon-modified-2 icon-modified"
 					src="../../assets/Navigation/account.png" />
-				<h3 v-show="activeIcon == 'Account'" class="button-text">Account</h3>
+				<h3 v-show="activeIcon == 'Account'" class="button-text" v-if="currentLanguage == 'en'">Account</h3>
+				<h3 v-show="activeIcon == 'Account'" class="button-text" v-if="currentLanguage == 'ar'">حساب</h3>
 			</div>
 		</div>
 	</div>
@@ -40,7 +44,7 @@ import { useMainStore } from "../../store/useMainStore";
 const main = useMainStore();
 const router = useRouter();
 const route = useRoute();
-const { cartItems, isUserLoggedIn } = storeToRefs(main);
+const { cartItems, isUserLoggedIn, currentLanguage } = storeToRefs(main);
 
 // Navigation
 const activeIcon = ref("Home");
