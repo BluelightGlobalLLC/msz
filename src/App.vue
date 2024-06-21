@@ -1,19 +1,18 @@
 <template>
 	<div class="main">
+		<search-bar />
 		<router-view v-slot="{ Component }">
 			<keep-alive exclude="Product">
 				<component :is="Component" />
 			</keep-alive>
 		</router-view>
-		<bottom-navbar />
 	</div>
 </template>
 
 <script setup>
 // TODO Check out https://icons8.com/license while making About Section
 // TODO Change background color of all image divs to they look have background color like repl
-
-import BottomNavbar from "./components/Navigation/BottomNavbar.vue";
+import SearchBar from "./components/Navigation/Searchbar.vue";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { Capacitor } from "@capacitor/core";
 
