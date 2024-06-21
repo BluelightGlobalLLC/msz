@@ -6,7 +6,7 @@
 			<span class="text">
 				<h1>{{ props.feature[1] }}</h1>
 			</span>
-			<div class="shop-button" @click="$router.push('/home')">Shop Now</div>
+			<div class="shop-button" @click="$router.push('/')">Shop Now</div>
 			<div class="line"></div>
 		</div>
 	</div>
