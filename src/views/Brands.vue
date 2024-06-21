@@ -1,6 +1,5 @@
 <template>
 	<div class="container">
-		<search-bar :navigate-back="false" @click="$router.push('/search')" />
 		<brands-pagination />
 		<category-banner />
 		<brand-list />
@@ -8,7 +7,6 @@
 </template>
 
 <script setup>
-import SearchBar from "../components/Navigation/Searchbar.vue";
 import BrandsPagination from "../components/View Specific/Brands/Pagination.vue";
 import CategoryBanner from "../components/Banners/Brands.vue";
 import BrandList from "../components/View Specific/Brands/Catalogue.vue";

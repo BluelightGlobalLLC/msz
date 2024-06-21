@@ -1,6 +1,5 @@
 <template>
 	<div class="container">
-		<search-bar :navigate-back="false" @click="$router.push('/search')" />
 		<banner-static :rem="-3" :height="43" num="3" />
 		<action-buttons :rem="2" />
 		<div class="blank"></div>
@@ -19,7 +18,6 @@
 
 <script setup>
 import BannerStatic from "../components/Banners/Static.vue";
-import SearchBar from "../components/Navigation/Searchbar.vue";
 import ActionButtons from "../components/View Specific/Account/ActionButtons.vue";
 import Footer from "../components/View Specific/Account/Footer.vue";
 import CustomerCare from "../components/View Specific/Account/CustomerCare.vue";

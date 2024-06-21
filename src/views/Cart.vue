@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<search-bar :navigate-back="false" @click="$router.push('/search')" />
 		<cart-skeleton v-if="!hasViewLoaded.cart" />
 		<div v-show="hasViewLoaded.cart" class="container-cart" :class="{ 'decreased-padding': cartItems.length == 0 }">
 			<span v-if="cartItems.length != 0">
@@ -18,7 +17,6 @@
 </template>
 
 <script setup>
-import SearchBar from "../components/Navigation/Searchbar.vue";
 import Items from "../components/View Specific/Cart/Items.vue";
 import CheckoutButton from "../components/View Specific/Cart/CheckoutButton.vue";
 import FillerProducts from "../components/Scrolls/Filler.vue";

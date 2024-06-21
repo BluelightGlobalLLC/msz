@@ -3,13 +3,10 @@
 		<popup-cart v-if="currentPopupState == true" />
 		<home-skeleton v-if="!hasViewLoaded.home" />
 		<div v-show="hasViewLoaded.home" class="home-wrapper">
-			<search-bar @click="$router.push('/search')" />
-			<div class="logo">
-				<img src="../assets/ViewAccounts/msouq_logo.png" alt="logo" class="logo-img">
-				<div class="line"></div>
-			</div>
+
 			<div class="second-wrapper">
-				<banner-autoplay :rem="1.2" />
+				<!--<banner-autoplay :rem="1.2" />-->
+				<banner-static num="4" :height="60" />
 				<product-scroll :rem="0.6" num="0" />
 				<category-scroll :rem="0.5" />
 				<product-scroll num="1" />
@@ -28,7 +25,6 @@
 </template>
 
 <script setup>
-import SearchBar from "../components/Navigation/Searchbar.vue";
 import BannerAutoplay from "../components/Banners/Autoplay.vue";
 import ProductScroll from "../components/Scrolls/Product.vue";
 import CategoryScroll from "../components/Scrolls/Category.vue";
@@ -84,9 +80,5 @@ else if (currentLanguage.value == "en") {
 	height: 3rem;
 	margin-left: -1.5rem;
 	margin-bottom: -1rem;
-}
-
-.second-wrapper {
-	padding-top: 8rem;
 }
 </style>

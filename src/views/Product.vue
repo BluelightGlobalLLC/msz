@@ -3,7 +3,6 @@
 		<product-skeleton v-if="!data" />
 		<popup-cart v-if="currentPopupState == true" />
 		<div v-if="data" class="wrapper">
-			<search-bar :navigate-back="true" @click="$router.push('/search')" />
 			<carousal :images="data.productCarousal" />
 			<info :data="data.productInfo" />
 			<specification-scroll :rem="2" :specifications="data.specifications" />
@@ -28,7 +27,6 @@
 <script setup>
 import Carousal from "../components/View Specific/Product/Carousal.vue";
 import Info from "../components/View Specific/Product/Info.vue";
-import SearchBar from "../components/Navigation/Searchbar.vue";
 import ProductScroll from "../components/Scrolls/Product.vue";
 import PopupCart from "../components/Popups/PopupCart.vue";
 import AtcButton from "../components/Buttons/AtcButton.vue";
