@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
 		<div class="section" v-if="false">
-			<img src="../../assets/navigation/fullLogo.png" class="logo" @click="$router.push('/')">
+			<!--<img src="../../assets/navigation/fullLogo.png" class="logo" @click="$router.push('/')">-->
 			<span>
 				<img src="../../assets/Navigation/gifticon.png" class="gift-icon" />
 				<img src="../../assets/Navigation/navcart2.png" class="cart-icon" />
