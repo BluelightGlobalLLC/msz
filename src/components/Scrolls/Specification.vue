@@ -8,6 +8,7 @@
 					<h1 class="spec-heading">{{ specification[0] }}</h1>
 				</div>
 			</div>
+			<div class="initial-scroll-padding"></div>
 		</div>
 	</div>
 </template>
@@ -43,6 +44,7 @@ const props = defineProps({
 
 .spec-box {
 	height: 6.875rem;
+	min-width: 8rem;
 	width: max-content;
 	padding-left: 0.625rem;
 	padding-right: 2rem;
