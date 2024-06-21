@@ -1,8 +1,12 @@
 <template>
 	<parent-button>
-		<div class="buy-btn" @click="addToCart(props.id); $router.push('/cart');">
-			<h1 class="btn-text" v-if="currentLanguage == 'en'">Buy now</h1>
-			<h1 class="btn-text" v-if="currentLanguage == 'ar'">اشتري الآن</h1>
+		<div class="buy-btn">
+			<a :href="`https://wa.me/91515555?text=Hey! What's the best price for ${props.name}`">
+				<h1 class="btn-text" v-if="currentLanguage == 'en'">Enquire</h1>
+			</a>
+			<a :href="`https://wa.me/91515555?text=Hey! What's the best price for ${props.name}`">
+				<h1 class="btn-text" v-if="currentLanguage == 'ar'">Enquire</h1>
+			</a>
 		</div>
 
 		<div v-if="currentLanguage == 'en'" class="atc-btn" @click="addToCart(props.id)">
@@ -24,6 +28,7 @@ import { Haptics } from '@capacitor/haptics';
 
 const props = defineProps({
 	id: { type: String },
+	name: { type: String },
 	color: { type: String }
 })
 
@@ -70,7 +75,7 @@ async function addToCartAr(productId) {
 	width: 60%;
 	height: 3.2rem;
 	border-radius: 0.4rem;
-	background-color: #f9b146;
+	background-color: #48A9DD;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -81,7 +86,7 @@ async function addToCartAr(productId) {
 	width: 100%;
 	height: 3.2rem;
 	border-radius: 0.4rem;
-	background-color: #f97a46;
+	background-color: #0D385E;
 	display: flex;
 	justify-content: center;
 	align-items: center;

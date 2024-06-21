@@ -23,7 +23,7 @@ const props = defineProps({
 const data = ref(null);
 async function getData() {
 	try {
-		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/banners/static/${props.num}`);
+		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/banners/static/${props.num}`);
 		data.value = response.data;
 	} catch (error) {
 		console.error(error);

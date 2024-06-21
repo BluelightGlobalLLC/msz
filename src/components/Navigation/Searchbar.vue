@@ -1,15 +1,23 @@
 <template>
 	<div class="wrapper">
-		<div class="section" v-if="false">
-			<!--<img src="../../assets/navigation/fullLogo.png" class="logo" @click="$router.push('/')">-->
+		<div class="section" v-if="true">
+			<img src="../../assets/navigation/textlogobig.png" class="logo" @click="$router.push('/')">
 			<span>
-				<img src="../../assets/Navigation/gifticon.png" class="gift-icon" />
-				<img src="../../assets/Navigation/navcart2.png" class="cart-icon" />
+				<img src="../../assets/Navigation/navnotifications.png" class="gift-icon"
+					@click="$router.push('/notifications')" />
+				<img src="../../assets/Navigation/navcart3.png" class="cart-icon" @click="$router.push('/cart')" />
+				<div v-show="cartItems.length != 0" class="quantity" :class="{ 'move-up': activeIcon == 'Cart' }">
+					{{ cartItems.length }}
+				</div>
 			</span>
 		</div>
 		<div class="flex-wrapper" @click="$router.push('/search')">
-			<div v-show="navigateBack" class="arrow-back-wrapper">
+			<div v-show="navigateBack" class="arrow-back-wrapper" v-if="currentLanguage == 'en'">
 				<img src="../../assets/Arrows/leftArrow.png" alt="back" class="arrow-back" @click="$router.go(-1)" />
+			</div>
+			<div v-show="navigateBack" class="arrow-back-wrapper" v-if="currentLanguage == 'ar'">
+				<img src="../../assets/Arrows/leftArrow.png" alt="back" class="arrow-back" @click="$router.go(-1)"
+					style="margin-right: -0.9rem;" />
 			</div>
 			<div class="searchbar">
 				<div class="search-icon-wrapper">
@@ -54,7 +62,7 @@ import { useMainStore } from "../../store/useMainStore.js";
 import { storeToRefs } from "pinia";
 
 const main = useMainStore();
-const { currentLanguage } = storeToRefs(main);
+const { currentLanguage, cartItems } = storeToRefs(main);
 
 let searchTerm = ref('')
 let searchTermFocus = ref('')
@@ -98,7 +106,7 @@ const findDevices = computed(() => {
 const trendingData = ref(null);
 async function getTrendingData() {
 	try {
-		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/navigation/trending`);
+		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/navigation/trending`);
 		trendingData.value = response.data;
 	} catch (error) {
 		console.error(error);
@@ -109,15 +117,16 @@ getTrendingData();
 
 <style scoped>
 .logo {
-	height: 3rem;
+	height: 1.5rem;
 	width: auto;
-	margin-bottom: 0.2rem;
+	margin-bottom: 0.3rem;
 }
 
 .cart-icon {
 	height: 2rem;
 	width: auto;
 	margin-top: 0.5rem;
+	margin-bottom: 0.19rem;
 	margin-right: 0.1rem;
 }
 
@@ -125,6 +134,7 @@ getTrendingData();
 	height: 2rem;
 	width: auto;
 	margin-top: 0.5rem;
+	margin-bottom: 0.3rem;
 	margin-right: 0.7rem;
 }
 
@@ -132,6 +142,7 @@ getTrendingData();
 	padding-top: 0.3rem;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .wrapper {
@@ -156,6 +167,22 @@ getTrendingData();
 .search-icon {
 	height: 1.3rem;
 	width: 1.3rem;
+}
+
+.quantity {
+	position: absolute;
+	height: 1rem;
+	width: 1rem;
+	border-radius: 50%;
+	background-color: #f97a46;
+	right: 1.9rem;
+	top: 1.3rem;
+	color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Poppins;
+	font-size: 0.6rem;
 }
 
 h1 {

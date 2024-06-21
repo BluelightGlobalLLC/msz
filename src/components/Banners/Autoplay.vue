@@ -2,15 +2,15 @@
 	<!-- prettier-ignore -->
 	<div class="main-scroll-container" :style="{ 'margin-bottom': props.rem + 'rem' }">
 		<Splide :options="{
-			rewind: true,
-			gap: '0rem',
-			autoplay: true,
-			lazyLoad: 'sequential',
-			pauseOnHover: false,
-			arrows: false,
-			type: 'loop',
-			pagination: false,
-		}" class="scroll-container" dir="ltr">
+		rewind: true,
+		gap: '0rem',
+		autoplay: true,
+		lazyLoad: 'sequential',
+		pauseOnHover: false,
+		arrows: false,
+		type: 'loop',
+		pagination: false,
+	}" class="scroll-container" dir="ltr">
 
 			<SplideSlide v-for="image in data" :key="image">
 				<a :href="image[1]" target="_blank">
@@ -44,7 +44,7 @@ data.value = [["https://i.imgur.com/rtpuNsm.png", ""]]
 
 async function getData() {
 	try {
-		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/banners/autoplay`);
+		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/banners/autoplay`);
 		data.value = response.data;
 	} catch (error) {
 		console.error(error);
