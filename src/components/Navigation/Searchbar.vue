@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
 		<div class="section" v-if="true">
-			<img src="../../assets/navigation/textlogobig.png" class="logo" @click="$router.push('/')">
+			<img src="../../../src/assets/Misc/textmsouq.png" class="logo" @click="$router.push('/')">
 			<span>
 				<img src="../../assets/Navigation/navnotifications.png" class="gift-icon"
 					@click="$router.push('/notifications')" />
