@@ -10,12 +10,12 @@
 			</div>
 		</div>
 		<div class="scroll-container" v-if="currentLanguage == 'ar'">
-			<div class="scroll-padding"></div>
 			<div v-for="item in dataAr" :key="item" @click="$router.push('/list/dbase/Trending ' + item.title)">
 				<div class="category-card scroll-item" :style="{ 'background-image': 'url(' + item.image + ')' }">
 					<h3 class="category-name">{{ item.title }}</h3>
 				</div>
 			</div>
+			<div class="scroll-padding"></div>
 		</div>
 	</div>
 </template>

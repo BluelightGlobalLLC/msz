@@ -4,7 +4,8 @@
 			<parent-button class="parent-btn" :class="{ expandParent: showPriceBreakdown }">
 				<div class="checkout-wrapper">
 					<div class="price-summary">
-						<div class="amount-title" v-if="currentLanguage == 'en'">Total Amount <span class="small-text">VAT
+						<div class="amount-title" v-if="currentLanguage == 'en'">Total Amount <span
+								class="small-text">VAT
 								Inclusive</span></div>
 						<div class="amount-title" v-if="currentLanguage == 'ar'">الاجمالي المستحق <span
 								class="small-text">شامل ضريبة القيمة المضافة</span></div>
@@ -13,7 +14,8 @@
 							<h1 class="amount" v-if="currentLanguage == 'ar'">رع {{ data.totalAmount.toFixed(2) }}</h1>
 							<img class="expand-btn"
 								:class="{ rotateArrowUp: showPriceBreakdown, rotateArrowDown: !showPriceBreakdown }"
-								src="../../../assets/Arrows/expand.png" @click="showPriceBreakdown = !showPriceBreakdown" />
+								src="../../../assets/Arrows/expand.png"
+								@click="showPriceBreakdown = !showPriceBreakdown" />
 						</div>
 					</div>
 					<div class="price-breakdown-wrapper">
@@ -26,10 +28,10 @@
 								<h1 class="breakdown-title">Shipping Fee</h1>
 								<h1 class="breakdown-value">
 									{{
-										data.shippingAmount == "Free"
-										? data.shippingAmount
-										: "RO " + data.shippingAmount
-									}}
+		data.shippingAmount == "Free"
+			? data.shippingAmount
+			: "RO " + data.shippingAmount
+	}}
 								</h1>
 							</div>
 							<div class="breakdown" v-if="currentLanguage == 'ar'">
@@ -40,10 +42,10 @@
 								<h1 class="breakdown-title">مصاريف الشحن</h1>
 								<h1 class="breakdown-value">
 									{{
-										data.shippingAmount == "حر / Free"
-										? data.shippingAmount
-										: "رع " + data.shippingAmount
-									}}
+		data.shippingAmount == "حر / Free"
+			? data.shippingAmount
+			: "رع " + data.shippingAmount
+	}}
 								</h1>
 							</div>
 							<div class="breakdown" v-if="currentLanguage == 'en'">
@@ -92,7 +94,7 @@ function getProductIDs() {
 async function getData() {
 	try {
 		const response = await axios.get(
-			`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/cart/data/${JSON.stringify(productIDs)}`
+			`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/cart/data/${JSON.stringify(productIDs)}`
 		);
 		data.value = response.data;
 		generateBilling("total", data.value.totalAmount.toFixed(2))
@@ -120,7 +122,7 @@ main.$subscribe(() => {
 }
 
 .parent-btn {
-	bottom: 3.8rem !important;
+	bottom: 1.8rem !important;
 	height: 7.3rem !important;
 	transition-timing-function: ease-out;
 	transition: 0.5s;
@@ -176,7 +178,7 @@ main.$subscribe(() => {
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	bottom: 4.5rem;
+	bottom: 2.4rem;
 	z-index: 11;
 }
 

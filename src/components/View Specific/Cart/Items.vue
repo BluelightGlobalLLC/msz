@@ -22,6 +22,7 @@ const props = defineProps({
 <style scoped>
 .container {
 	padding-left: 0.8rem;
+	padding-right: 0.8rem;
 	padding-bottom: 1rem;
 	background-color: #ffffff;
 }

@@ -70,7 +70,7 @@ const countdown = function () {
 const data = ref(null);
 async function getFlashsaleData() {
 	try {
-		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/scrolls/flashsale`);
+		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/flashsale`);
 		data.value = response.data;
 		endDate = new Date(data.value.endDate).getTime();
 		setInterval(countdown, seconds);

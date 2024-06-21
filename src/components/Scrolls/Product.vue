@@ -9,11 +9,11 @@
 			</div>
 		</div>
 		<div class="scroll-container" @scroll.passive="dotColor($event)">
-			<div class="scroll-padding"></div>
+			<div class="scroll-padding" v-if="currentLanguage == 'en'"></div>
 			<div v-for="cardData in data.products" :key="cardData.productId">
 				<product-card class="scroll-item" :data="cardData" />
 			</div>
-			<div class="scroll-padding"></div>
+			<div class="scroll-padding" v-if="currentLanguage == 'ar'"></div>
 		</div>
 	</div>
 </template>
@@ -53,7 +53,7 @@ function dotColor(event) {
 const data = ref(null);
 async function getData() {
 	try {
-		const response = await axios.get(`https://api-fnt8.onrender.com/v1/${currentLanguage.value}/scrolls/product/${props.num}`);
+		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/product/${props.num}`);
 		data.value = response.data;
 		if (!hasViewLoaded.value.home) {
 			toggleViewLoaded("home");

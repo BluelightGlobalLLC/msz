@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper">
 		<img src="../../../assets/ViewAccounts/logo.png" alt="Logo" />
-		<h1 class="info">© 2022 | v0.92 | All Rights Reserved</h1>
+		<h1 class="info">© 2024 | v1.02 | All Rights Reserved</h1>
 	</div>
 </template>
 
@@ -10,7 +10,8 @@
 <style scoped>
 .wrapper {
 	width: 100%;
-	height: 8rem;
+	height: 4rem;
+	margin-top: 3rem;
 	padding-bottom: 1rem;
 	display: flex;
 	flex-direction: column;
