@@ -1,6 +1,7 @@
 <template>
 	<div v-if="data" class="linear-bg" :style="{ 'margin-bottom': props.rem + 'rem' }">
-		<img src="../../assets/FlashSale/fallingstar.png" class="falling-stars" />
+		<img src="../../assets/FlashSale/fallingstar.png" class="falling-stars" v-if="currentLanguage == 'en'" />
+		<img src="../../assets/FlashSale/fallingstar.png" class="falling-stars-ar" v-if="currentLanguage == 'ar'" />
 		<div class="header-wrapper">
 			<span>
 				<h1 class="title" v-if="currentLanguage == 'en'">Limited Time Grabs</h1>
@@ -107,6 +108,7 @@ getFlashsaleData();
 	line-height: 1.5rem;
 	color: #4e0000;
 	margin-left: 0.8rem;
+	margin-right: 0.8rem;
 	margin-bottom: 0.1rem;
 }
 
@@ -116,11 +118,12 @@ getFlashsaleData();
 	font-weight: 500;
 	color: #3b0000;
 	margin-left: 0.8rem;
+	margin-right: 0.8rem;
 	margin-bottom: 1rem;
 }
 
 .discount-wrapper {
-	height: 9rem;
+	height: 9.4rem;
 	min-width: 8rem;
 	background-color: #ffffff;
 	border-radius: 0.4rem;
@@ -129,6 +132,7 @@ getFlashsaleData();
 	justify-content: center;
 	align-items: flex-end;
 	padding-bottom: 0.3rem;
+	padding-top: 0.4rem;
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
@@ -139,8 +143,8 @@ getFlashsaleData();
 	height: 7rem;
 	max-height: 7rem;
 	min-height: 7rem;
-	width: 7rem;
-	margin-bottom: 0.2rem;
+	width: auto;
+	margin-bottom: 0.3rem;
 }
 
 .discount-tag {
@@ -176,7 +180,16 @@ getFlashsaleData();
 	max-width: 48vw;
 	position: absolute;
 	margin-top: -1rem;
-	margin-left: 45vw;
-	z-index: 0;
+	left: 45vw;
+	z-index: -10;
+}
+
+.falling-stars-ar {
+	max-height: 14.3rem;
+	max-width: 48vw;
+	position: absolute;
+	margin-top: -1rem;
+	right: 45vw;
+	z-index: -10;
 }
 </style>
