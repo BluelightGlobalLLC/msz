@@ -3,36 +3,26 @@
         <img src="../../assets/Misc/confirmed.gif" alt="Order Confirmed">
         <h1 v-if="currentLanguage == 'en'">Your Order Has Been Placed!</h1>
         <h2 v-if="currentLanguage == 'en'">Our representative will reach out to you shortly to confirm the order.</h2>
-        <h3 v-if="currentLanguage == 'en'">Redirecting you back to Home in {{ seconds }}</h3>
+        <h3 v-if="currentLanguage == 'en'" class="underlined" @click="$router.push('/')">Continue Browsing</h3>
         <h1 v-if="currentLanguage == 'ar'">وقد وضعت طلبك</h1>
         <h2 v-if="currentLanguage == 'ar'">سوف يقوم M.Souq بالاتصال بك قريبا</h2>
-        <h3 v-if="currentLanguage == 'ar'">Redirecting you back to Home in {{ seconds }}</h3>
+        <h3 v-if="currentLanguage == 'ar'" class="underlined" @click="$router.push('/')">Continue Browsing</h3>
     </div>
 </template>
 
 <script setup>
-import { onActivated, onDeactivated, ref } from "vue"
-import { useRouter } from "vue-router";
+import { useMainStore } from "../../store/useMainStore";
+import { storeToRefs } from "pinia";
 
-const router = useRouter()
-const seconds = ref(8)
-
-function countdownSeconds() {
-    if (seconds.value != 1) {
-        seconds.value = seconds.value - 1
-    }
-    else {
-        clearInterval(redirectInterval);
-        router.push('/')
-    }
-}
-
-const redirectInterval = setInterval(countdownSeconds, 1000)
-onActivated(() => { redirectInterval })
-onDeactivated(() => { clearInterval(redirectInterval) })
+const main = useMainStore();
+const { currentLanguage } = storeToRefs(main);
 </script>
 
 <style scoped>
+.underlined {
+    text-decoration: underline;
+}
+
 .container {
     display: flex;
     justify-content: center;

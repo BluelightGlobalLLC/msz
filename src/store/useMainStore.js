@@ -95,6 +95,24 @@ export const useMainStore = defineStore("main", {
 			});
 		},
 		async addToAddress(field, value) {
+			switch (field) {
+				case "منطقة":
+					field = "Region";
+					break;
+				case "عنوان":
+					field = "Address";
+					break;
+				case "رقم المنزل":
+					field = "House No.";
+					break;
+				case "بريد إلكتروني":
+					field = "Email";
+					break;
+				case "رقم التليفون":
+					field = "Phone";
+					break;
+			}
+
 			this.address[field] = value
 			await Preferences.set({
 				key: field,
@@ -109,9 +127,13 @@ export const useMainStore = defineStore("main", {
 				this.billing[field] = value
 			}
 		},
+		clearCartItems() {
+			this.cartItems = [];
+			this.billing = { "total": 0, "subtotal": 0, "shipping": 0, "items": [] };
+		},
 		async fetchCategories() {
 			try {
-				const response = await axios.get(`https://api-fnt8.onrender.com/v1/${this.currentLanguage}/categories`);
+				const response = await axios.get(`https://api-uhzv.onrender.com/v1/${this.currentLanguage}/categories`);
 				this.categories = response.data
 			} catch (error) {
 				console.error(error);
@@ -119,13 +141,14 @@ export const useMainStore = defineStore("main", {
 		},
 		async fetchBrands(category) {
 			try {
-				const response = await axios.get(`https://api-fnt8.onrender.com/v1/${this.currentLanguage}/brands/${category.toLowerCase()}`);
+				const response = await axios.get(`https://api-uhzv.onrender.com/v1/${this.currentLanguage}/brands/${category.toLowerCase()}`);
 				this.brands = response.data
 			} catch (error) {
 				console.error(error);
 			}
 		},
 	},
+	persist: true,
 });
 
 // If you need to process data before returning it use getters: {}

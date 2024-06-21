@@ -5,7 +5,7 @@
 		<div v-show="hasViewLoaded.home" class="home-wrapper">
 
 			<div class="second-wrapper">
-				<!--<banner-autoplay :rem="1.2" />-->
+				<language-alert />
 				<banner-static num="4" :height="60" />
 				<product-scroll :rem="0.6" num="0" />
 				<category-scroll :rem="0.5" />
@@ -19,6 +19,9 @@
 				<product-scroll num="5" />
 				<category-grid />
 				<product-scroll num="6" />
+				<div class="white-box">
+					<Footer />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -33,6 +36,8 @@ import PopupCart from "../components/Popups/PopupCart.vue";
 import FlashSale from "../components/Scrolls/FlashSale.vue";
 import CategoryGrid from "../components/Scrolls/CategoryAuto.vue";
 import HomeSkeleton from "../components/Skeletons/Views/Home.vue";
+import LanguageAlert from "../components/View Specific/Home/LanguageAlert.vue"
+import Footer from "../components/View Specific/Account/Footer.vue";
 import { useMainStore } from "../store/useMainStore";
 import { usePopup } from "../Composables/comFunctions.js";
 import { storeToRefs } from "pinia";
@@ -62,23 +67,5 @@ else if (currentLanguage.value == "en") {
 	display: flex;
 	height: 100%;
 	width: 100%;
-}
-
-.logo {
-	display: flex;
-	padding-top: 3rem;
-	justify-content: center;
-	padding-left: 2rem;
-	height: 15rem;
-	width: 100%;
-	background-color: #013761;
-	position: absolute;
-	top: 3.5rem;
-}
-
-.logo-img {
-	height: 3rem;
-	margin-left: -1.5rem;
-	margin-bottom: -1rem;
 }
 </style>
