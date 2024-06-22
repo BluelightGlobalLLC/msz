@@ -3,10 +3,13 @@
 		<div class="section" v-if="true">
 			<img src="../../../src/assets/Misc/textmsouq.png" class="logo" @click="$router.push('/')">
 			<span>
-				<img src="../../assets/Navigation/navnotifications.png" class="gift-icon"
-					@click="$router.push('/notifications')" />
+				<img src="../../assets/Navigation/navlike.png" class="gift-icon"
+					@click="$router.push('/list/wishlist/title')" />
 				<img src="../../assets/Navigation/navcart3.png" class="cart-icon" @click="$router.push('/cart')" />
-				<div v-show="cartItems.length != 0" class="quantity" :class="{ 'move-up': activeIcon == 'Cart' }">
+				<div v-show="cartItems.length != 0" class="quantity" v-if="currentLanguage == 'en'">
+					{{ cartItems.length }}
+				</div>
+				<div v-show="cartItems.length != 0" class="quantity-ar" v-if="currentLanguage == 'ar'">
 					{{ cartItems.length }}
 				</div>
 			</span>
@@ -106,7 +109,7 @@ const findDevices = computed(() => {
 const trendingData = ref(null);
 async function getTrendingData() {
 	try {
-		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/navigation/trending`);
+		const response = await axios.get(`https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/navigation/trending`);
 		trendingData.value = response.data;
 	} catch (error) {
 		console.error(error);
@@ -126,7 +129,7 @@ getTrendingData();
 	height: 2rem;
 	width: auto;
 	margin-top: 0.5rem;
-	margin-bottom: 0.19rem;
+	margin-bottom: 0.09rem;
 	margin-right: 0.1rem;
 }
 
@@ -134,7 +137,7 @@ getTrendingData();
 	height: 2rem;
 	width: auto;
 	margin-top: 0.5rem;
-	margin-bottom: 0.3rem;
+	margin-bottom: 0.4rem;
 	margin-right: 0.7rem;
 }
 
@@ -176,7 +179,23 @@ getTrendingData();
 	border-radius: 50%;
 	background-color: #f97a46;
 	right: 1.9rem;
-	top: 1.3rem;
+	top: 1.4rem;
+	color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Poppins;
+	font-size: 0.6rem;
+}
+
+.quantity-ar {
+	position: absolute;
+	height: 1rem;
+	width: 1rem;
+	border-radius: 50%;
+	background-color: #f97a46;
+	left: 1.9rem;
+	top: 1.4rem;
 	color: #ffffff;
 	display: flex;
 	justify-content: center;
