@@ -66,25 +66,25 @@ async function getListData() {
 			let linkParam = ""
 			switch (route.params.title) {
 				case "Top Offers":
-					linkParam = `https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/list/dummy`
+					linkParam = `https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Smartphones":
-					linkParam = `https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/list/dummy`
+					linkParam = `https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Tablets":
-					linkParam = `https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/list/dummy`
+					linkParam = `https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Cases":
-					linkParam = `https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/list/dummy`
+					linkParam = `https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Smartwatches":
-					linkParam = `https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/list/dummy`
+					linkParam = `https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Headphones":
-					linkParam = `https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/list/dummy`
+					linkParam = `https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 				case "Trending Smartbands":
-					linkParam = `https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/list/dummy`
+					linkParam = `https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/list/dummy`
 					break;
 			}
 			const response = await axios.get(linkParam);
@@ -99,7 +99,7 @@ async function getListData() {
 	}
 	else if (route.params.fetchaddress === "stock") {
 		loading.value = true
-		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/navigation/search/${route.params.title}`);
+		const response = await axios.get(`https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/navigation/search/${route.params.title}`);
 		data.value = response.data;
 		if (!data.value.length) {
 			loading.value = false

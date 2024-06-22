@@ -53,7 +53,7 @@ function dotColor(event) {
 const data = ref(null);
 async function getData() {
 	try {
-		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/scrolls/product/${props.num}`);
+		const response = await axios.get(`https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/scrolls/product/${props.num}`);
 		data.value = response.data;
 		if (!hasViewLoaded.value.home) {
 			toggleViewLoaded("home");

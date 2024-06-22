@@ -44,7 +44,7 @@ async function confirmOrder() {
 			isSpinnerActive.value = true;
 			const cartItemsJSON = JSON.stringify(cartItems.value)
 			const addressJSON = JSON.stringify(address.value)
-			await axios.post(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/billing/reciept/${address.value.Email}/${cartItemsJSON}/${addressJSON}`)
+			await axios.post(`https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/billing/reciept/${address.value.Email}/${cartItemsJSON}/${addressJSON}`)
 				.then(() => { router.push('/billing/confirmed') })
 			clearCartItems();
 		} catch (error) {

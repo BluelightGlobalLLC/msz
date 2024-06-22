@@ -133,7 +133,7 @@ export const useMainStore = defineStore("main", {
 		},
 		async fetchCategories() {
 			try {
-				const response = await axios.get(`https://api-uhzv.onrender.com/v1/${this.currentLanguage}/categories`);
+				const response = await axios.get(`https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${this.currentLanguage}/categories`);
 				this.categories = response.data
 			} catch (error) {
 				console.error(error);
@@ -141,14 +141,16 @@ export const useMainStore = defineStore("main", {
 		},
 		async fetchBrands(category) {
 			try {
-				const response = await axios.get(`https://api-uhzv.onrender.com/v1/${this.currentLanguage}/brands/${category.toLowerCase()}`);
+				const response = await axios.get(`https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${this.currentLanguage}/brands/${category.toLowerCase()}`);
 				this.brands = response.data
 			} catch (error) {
 				console.error(error);
 			}
 		},
 	},
-	persist: true,
+	persist: {
+		paths: ['currentScrollDirection', 'currentLanguage', 'currentPopupState', 'hasViewLoaded', 'isVibrationsEnabled', 'cartItems', 'likedItems', 'historyItems', 'categories', 'brands', 'address']
+	},
 });
 
 // If you need to process data before returning it use getters: {}

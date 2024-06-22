@@ -60,7 +60,7 @@ function removeItem(itemID) {
 const data = ref(null);
 async function getCartItemData() {
 	try {
-		const response = await axios.get(`https://api-uhzv.onrender.com/v1/${currentLanguage.value}/cart/item/${props.item[0]}`);
+		const response = await axios.get(`https://ff135741-e6c5-4504-bbd8-4006a68674ff-00-1joqn986eucll.sisko.replit.dev/v1/${currentLanguage.value}/cart/item/${props.item[0]}`);
 		data.value = response.data;
 		generateBilling("items", [data.value.productName, data.value.currentPrice, props.item[1], props.item[0]])
 	} catch (error) {
@@ -68,8 +68,6 @@ async function getCartItemData() {
 	}
 }
 onMounted(() => getCartItemData());
-
-
 </script>
 
 <style scoped>
