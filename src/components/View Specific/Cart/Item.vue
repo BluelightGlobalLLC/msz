@@ -22,9 +22,9 @@
 				{{ specification[0] }}
 			</div>
 		</div>
-		<!-- set v-show to true to enable addon-->
+		<!-- TODO set v-show to true to enable addon-->
 		<div v-show="false" class="addon">
-			<input type="checkbox" />
+			<input type="checkbox" checked />
 			<h3>
 				Secure your device and never fear paying unexpected costs with our trademark
 				<span style="font-weight: 700; color: #2c9d04">Smartcare Plus</span>. Get full device protection with

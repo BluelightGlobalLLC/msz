@@ -12,17 +12,18 @@
 		<div class="item-wrapper" v-if="currentLanguage == 'ar'">
 			<h4 class="address" v-if="address.Address">{{ address.Address }}</h4>
 			<h4 class="address" v-if="address['House No.']">رقم المنزل {{ address["House No."] }}, {{ address.Region
-			}}</h4>
+				}}</h4>
 			<h4 class="address" v-if="address.Email">{{ address.Email }}</h4>
 			<h4 class="address" v-if="address.Phone">رقم التليفون {{ address.Phone }}</h4>
 			<h4 class="address" v-if="!address.Address">No Shipping Address found</h4>
-			<h4 class="new-address" @click="$router.push('/billing/address')"><span class="orange">أضف عنوان شحن جديد</span>
+			<h4 class="new-address" @click="$router.push('/billing/address')"><span class="orange">أضف عنوان شحن
+					جديد</span>
 			</h4>
 		</div>
 		<div class="item-wrapper" v-if="currentLanguage == 'en'">
 			<h4 class="address" v-if="address.Address">{{ address.Address }}</h4>
 			<h4 class="address" v-if="address['House No.']">House No. {{ address["House No."] }}, {{ address.Region
-			}}</h4>
+				}}</h4>
 			<h4 class="address" v-if="address.Email">{{ address.Email }}</h4>
 			<h4 class="address" v-if="address.Phone">Contact: {{ address.Phone }}</h4>
 			<h4 class="address" v-if="!address.Address">No Shipping Addresses Found</h4>
@@ -97,8 +98,7 @@ const { billing, address, currentLanguage } = storeToRefs(main);
 
 .item-wrapper {
 	font-family: Poppins;
-	width: 70%;
-	/* TODO CHANGE TO 80% */
+	width: 75%;
 	margin-top: 2rem;
 }
 

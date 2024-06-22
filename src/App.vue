@@ -11,7 +11,6 @@
 
 <script setup>
 // TODO Check out https://icons8.com/license while making About Section
-// TODO Change background color of all image divs to they look have background color like repl
 import SearchBar from "./components/Navigation/Searchbar.vue";
 import { StatusBar, Style } from "@capacitor/status-bar";
 import { Capacitor } from "@capacitor/core";

@@ -10,10 +10,9 @@
 			<text-banner :rem="1.5" heading="100% GENUINE GUARANTEE"
 				subheading="WE MAKE SURE THAT ALL OUR DEVICES ARE 100% GENUINE" heading-color="#008D06"
 				subheading-color="#34B233" />
-			<text-banner v-if="data.productInfo.currentPrice > 200" :rem="2.8" heading="FREE SECURE SHIPPING"
+			<text-banner v-if="data.productInfo.currentPrice > 50" :rem="2.8" heading="FREE SECURE SHIPPING"
 				subheading="GET FREE & SECURE SHIPPING WITH THIS PRODUCT" heading-color="#8D2A00"
 				subheading-color="#B25133" />
-			<!--TODO do not hardcode this 200. take it from api so it can be set variably/dynamically -->
 			<banner-static :rem="1" :height="34" num="1" />
 			<div class="line"></div>
 			<product-scroll :rem="1.5" num="7" />

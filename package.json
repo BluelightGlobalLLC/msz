@@ -21,6 +21,7 @@
         "@splidejs/splide-extension-auto-scroll": "^0.4.2",
         "@splidejs/vue-splide": "^0.6.3",
         "axios": "^0.27.2",
+        "fuse.js": "^7.0.0",
         "jetifier": "^2.0.0",
         "pinia": "^2.0.16",
         "pinia-plugin-persistedstate": "^3.2.1",

@@ -118,6 +118,4 @@ const props = defineProps({
 	font-weight: 400;
 	color: #7c7c7c;
 }
-
-/* TODO Add field that shows free shipping if product rate is above OMR80 or sumn */
 </style>
