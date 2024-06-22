@@ -45,7 +45,7 @@ const props = defineProps({
 		type: Object,
 	},
 })
-
+console.log(props.data.tag)
 const main = useMainStore()
 const { togglePopupState, addCartItem, addLikedItem, removeLikedItem } = main
 const { isVibrationsEnabled, currentLanguage } = storeToRefs(main)
